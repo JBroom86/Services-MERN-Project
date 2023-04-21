@@ -8,9 +8,9 @@ function Header() {
                     <span><strong>Absolute Skin</strong> by Aireonna</span>
                 </a>
                 <div className="flex border border-brown-300 rounded-full p-2 shadow-md shadow-gray-300">
-                    <div className="p-4">Services</div>
-                    <div className="p-4">Products</div>
-                    <div className="p-4">Log In</div>
+                    <div className="p-4"><a href="">Services</a></div>
+                    <div className="p-4"><a href="">Products</a></div>
+                    <div className="p-4"><a href="">Log In</a></div>
                 </div>
             </header>
         </div>
