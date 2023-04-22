@@ -12,7 +12,7 @@ button {
   @apply bg-gray-300 w-full;
 }
 
-button.primary {
+button.loginbutton {
   background-color: #f5385d;
   @apply p-2 w-full text-white rounded-2xl;
 }

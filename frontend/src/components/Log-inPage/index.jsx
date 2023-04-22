@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom"
+
+
 function LogInPage() {
     return (
         <>
@@ -7,7 +10,11 @@ function LogInPage() {
                     <form className="max-w-md mx-auto">
                         <input type="email" placeholder="email address" />
                         <input type="password" placeholder="password" />
-                        <button className="primary">Login</button>
+                        <button className="loginbutton">Login</button>
+                        <div className="text-center py-2">
+                            <Link to={'/signup'} className="underline">Create an account</Link>                        
+                        </div>
+                        
                     </form>
                 </div>   
 

@@ -4,6 +4,7 @@ import LogInPage from '../Log-inPage'
 import AboutPage from '../AboutPage'
 import ProductsPage from '../ProductsPage'
 import ServicesPage from '../ServicesPage'
+import SignupPage from '../SignupPage'
 
 function Header() {
     return (
@@ -30,6 +31,7 @@ function Header() {
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/login" element={<LogInPage />} />
+            <Route path="/signup" element={<SignupPage />} />
             
         </Routes>
         </>
