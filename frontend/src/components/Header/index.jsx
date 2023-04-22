@@ -1,20 +1,35 @@
+import { Route, Routes, Link } from 'react-router-dom'
+import HomePage from '../Homepage'
+import LogInPage from '../Log-inPage'
+import AboutPage from '../AboutPage'
+import ProductsPage from '../ProductsPage'
+import ServicesPage from '../ServicesPage'
+
 function Header() {
     return (
         <>
         <div>
             <header className="p-4 flex justify-between">
-                <a href="" className="flex items-center gap-1">
-                    <img src="https://static.thenounproject.com/png/1335654-200.png" alt="" className="w-10 h-10"/>
+                <Link href="/" className="flex items-center gap-1">
+                    <img src="https://static.thenounproject.com/png/1335654-200.png" alt="" className="w-20 h-20"/>
                     <span><strong>Absolute Skin</strong> by Aireonna</span>
-                </a>
-                <div className="flex border border-brown-300 rounded-full p-2 shadow-md shadow-gray-300">
-                    <div className="p-4"><a href="">Services</a></div>
-                    <div className="p-4"><a href="">Products</a></div>
-                    <div className="p-4"><a href="">Log In</a></div>
+                </Link>
+                <div className="flex items-center border border-brown-300 rounded-full p-2 shadow-md shadow-gray-300">
+                    <div className="p-4"><Link to="/services">Services</Link></div>
+                    <div className="p-4"><Link to="/products">Products</Link></div>
+                    <div className="p-4"><Link to="/about">About Me</Link></div>
+                    <div className="p-4"><Link to="/login">Log In</Link></div>
                 </div>
             </header>
         </div>
         
+        <Routes>
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/login" element={<LogInPage />} />
+            <Route path="/" element={<HomePage />} />
+        </Routes>
         </>
     )
 }
