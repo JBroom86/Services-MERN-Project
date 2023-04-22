@@ -10,7 +10,7 @@ function Header() {
         <>
         <div>
             <header className="p-4 flex justify-between">
-                <Link href="/" className="flex items-center gap-1">
+                <Link to="/" className="flex items-center gap-1">
                     <img src="https://static.thenounproject.com/png/1335654-200.png" alt="" className="w-20 h-20"/>
                     <span><strong>Absolute Skin</strong> by Aireonna</span>
                 </Link>
@@ -24,11 +24,13 @@ function Header() {
         </div>
         
         <Routes>
+
+            <Route path="/" element={<HomePage />} />   
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/login" element={<LogInPage />} />
-            <Route path="/" element={<HomePage />} />
+            
         </Routes>
         </>
     )
