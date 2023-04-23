@@ -1,5 +1,23 @@
+import { useContext } from "react"
+import { UserContext } from "../UserContext"
+import { Navigate } from "react-router-dom"
+
 function AccountPage() {
-    return <h1> This is the Account Page </h1>
+    const {ready, user} = useContext(UserContext)
+
+    if (!ready) {
+        return 'Loading account details...'
+    }
+
+    if (ready && !user) {
+        return <Navigate to={'/login'} />
+    }
+
+    return (
+        <>
+            <h1>Account Page for {user?.name} </h1>
+        </>
+    )
 }
     
 
