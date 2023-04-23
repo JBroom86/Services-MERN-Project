@@ -29,13 +29,29 @@ app.get('/test', (req, res) => {
 
 app.post('/signup', async (req, res) => {
     const {name, email, password} = req.body
-    const userObj = await User.create({
-        name,
-        email,
-        password:bcrypt.hashSync(password, bcryptSalt)
-        //This is calling the bcrupt function and passing the key and the bcryptSalt variable to perform encryption function. 
-    })
-    res.json(userObj)
+    
+    try {
+        const userObj = await User.create({
+            name,
+            email,
+            password:bcrypt.hashSync(password, bcryptSalt)
+            //This is calling the bcrupt function and passing the key and the bcryptSalt variable to perform encryption function. 
+        })
+        res.json(userObj)
+    } catch (error) {
+        res.status(422).json(error)
+    }
+        
+})
+
+app.post('/login', async (req, res) => {
+    const {email, password} = req.body
+    const userObj = await User.findOne({email})
+    if (userObj) {
+        res.json('found')
+    } else {
+        res.json('not found')
+    }
 })
 
 app.listen(5000)

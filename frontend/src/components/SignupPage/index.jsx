@@ -8,12 +8,16 @@ function SignupPage() {
     const [password, setPassword] = useState('')
     async function signUp(ev) {
         ev.preventDefault();
-        await axios.post('/signup', {
-            name,
-            email,
-            password
-        })
-        
+        try {
+            await axios.post('/signup', {
+                name,
+                email,
+                password
+            })
+            alert('Success! Return to Log In Page!')
+        } catch (error) {
+            alert('Failed to register account.')
+        }
     }
 
 
