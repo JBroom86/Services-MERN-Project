@@ -2,7 +2,7 @@
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
-// BCrypt password encryption import. link to documentation -> https://www.npmjs.com/package/bcrypt
+// BCrypt password encryption import. link to documentation -> https://www.npmjs.com/package/bcrypt -> also watched this video on how it works - https://www.youtube.com/watch?v=AzA_LTDoFqY
 const bcrypt = require('bcryptjs')
 require('dotenv').config()
 const app = express()
@@ -11,7 +11,7 @@ const app = express()
 // Middleware
 const User = require('./models/user')
 // This sets a variable to call bcrypt to perform the embedded encryption function.
-const bcryptSalt = bcrypt.genSalt(10)
+const bcryptSalt = bcrypt.genSaltSync(10)
 
 app.use(express.json())
 
