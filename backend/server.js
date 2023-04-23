@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 // BCrypt password encryption import. link to documentation -> https://www.npmjs.com/package/bcrypt -> also watched this video on how it works - https://www.youtube.com/watch?v=AzA_LTDoFqY
 const bcrypt = require('bcryptjs')
+const cookieParser = require('cookie-parser')
 require('dotenv').config()
 const app = express()
 
@@ -17,7 +18,7 @@ const bcryptSalt = bcrypt.genSaltSync(10)
 const jwtSecret = 'this is a random string'
 
 app.use(express.json())
-
+app.use(cookieParser())
 app.use(cors({
     credentials: true,
     origin: 'http://localhost:5173',
@@ -53,9 +54,13 @@ app.post('/login', async (req, res) => {
     if (userObj) {
         const passwordGood = bcrypt.compareSync(password, userObj.password)
         if (passwordGood) {
-            jwt.sign({email: userObj.email, id: userObj._id}, jwtSecret,{}, (error, token) => {
+            jwt.sign({
+                email: userObj.email, 
+                id: userObj._id, 
+                name: userObj.name
+            }, jwtSecret,{}, (error, token) => {
                 if (error) throw error
-                res.cookie('token', token).json('password matches')
+                res.cookie('token', token).json(userObj)
             })
             
         } else {
@@ -64,6 +69,19 @@ app.post('/login', async (req, res) => {
     } else {
         res.json('not found')
     }
+})
+
+app.get('/profile', (req, res) => {
+    const {token} = req.cookies
+    if (token) {
+        jwt.verify(token, jwtSecret, {}, (error, user) => {
+            if (error) throw error
+            res.json(user)
+        })
+    } else {
+        res.json(null)
+    }
+    
 })
 
 app.listen(5000)
