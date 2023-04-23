@@ -2,8 +2,7 @@ import { Route, Routes, Link } from 'react-router-dom'
 
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:5000'
-axios.defaults.withCredentials = true;
+
 
 function Header() {
     return (
