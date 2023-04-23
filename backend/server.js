@@ -2,6 +2,8 @@
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
+// requiring JSON Web Token package - see markdown posted
+const jwt = require('jsonwebtoken')
 // BCrypt password encryption import. link to documentation -> https://www.npmjs.com/package/bcrypt -> also watched this video on how it works - https://www.youtube.com/watch?v=AzA_LTDoFqY
 const bcrypt = require('bcryptjs')
 require('dotenv').config()
@@ -12,6 +14,7 @@ const app = express()
 const User = require('./models/user')
 // This sets a variable to call bcrypt to perform the embedded encryption function.
 const bcryptSalt = bcrypt.genSaltSync(10)
+const jwtSecret = 'this is a random string'
 
 app.use(express.json())
 
@@ -48,7 +51,16 @@ app.post('/login', async (req, res) => {
     const {email, password} = req.body
     const userObj = await User.findOne({email})
     if (userObj) {
-        res.json('found')
+        const passwordGood = bcrypt.compareSync(password, userObj.password)
+        if (passwordGood) {
+            jwt.sign({email: userObj.email, id: userObj._id}, jwtSecret,{}, (error, token) => {
+                if (error) throw error
+                res.cookie('token', token).json('password matches')
+            })
+            
+        } else {
+            res.json('password no match')
+        }
     } else {
         res.json('not found')
     }

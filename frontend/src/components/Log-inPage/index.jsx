@@ -1,21 +1,27 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import axios from "axios"
 
 
 function LogInPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
+    const [redirect, setRedirect] = useState(false)
 // Login confirmation alerts -> https://blog.appsignal.com/2022/06/15/how-to-handle-errors-in-react.html
     async function handleLoginSubmit(ev) {
         ev.preventDefault();
         try {
             await axios.post('/login', {email, password})
-            alert('Login Successful')        
+            alert('Login Successful')
+            setRedirect(true)        
         } catch (e) {
             alert('Login failed')
         }
+    }
+
+    // This redirects the page to the homepage after the user logs in - learned about how to use Navigate here - https://ui.dev/react-router-programmatically-navigate
+    if (redirect) {
+        return <Navigate to={'/'} />
     }
 
     return (

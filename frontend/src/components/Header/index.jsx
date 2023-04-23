@@ -8,6 +8,7 @@ import SignupPage from '../SignupPage'
 import axios from 'axios'
 
 axios.defaults.baseURL = 'http://localhost:5000'
+axios.defaults.withCredentials = true;
 
 function Header() {
     return (
