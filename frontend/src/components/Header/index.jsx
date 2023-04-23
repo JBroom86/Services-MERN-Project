@@ -5,6 +5,9 @@ import AboutPage from '../AboutPage'
 import ProductsPage from '../ProductsPage'
 import ServicesPage from '../ServicesPage'
 import SignupPage from '../SignupPage'
+import axios from 'axios'
+
+axios.defaults.baseURL = 'http://localhost:5000'
 
 function Header() {
     return (

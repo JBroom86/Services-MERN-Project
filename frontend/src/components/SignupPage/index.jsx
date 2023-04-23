@@ -8,7 +8,11 @@ function SignupPage() {
     const [password, setPassword] = useState('')
     function signUp(ev) {
         ev.preventDefault();
-        axios.get('http://localhost:5000/test')
+        axios.post('/signup', {
+            name,
+            email,
+            password
+        })
     }
 
 
