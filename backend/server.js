@@ -1,4 +1,5 @@
-// Requiring packages
+/* Require modules
+--------------------------------------------------------------- */
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
@@ -8,15 +9,22 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const cookieParser = require('cookie-parser')
 require('dotenv').config()
+
+/* Create the Express app
+--------------------------------------------------------------- */
 const app = express()
 
 
-// Middleware
+/* Require the db connection, models, and seed data
+--------------------------------------------------------------- */
 const User = require('./models/user')
-// This sets a variable to call bcrypt to perform the embedded encryption function.
-const bcryptSalt = bcrypt.genSaltSync(10)
-const jwtSecret = 'this is a random string'
+const Service = require('./models/service')
 
+const userCtrl = require('./controllers/users')
+const serviceCtrl = require('./controllers/services')
+
+/* Middleware (app.use)
+--------------------------------------------------------------- */
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
@@ -24,12 +32,24 @@ app.use(cors({
     origin: 'http://localhost:5173',
 }))
 
-// Connection to MongooseDB
-mongoose.connect(process.env.MONGO_URL)
+// This sets a variable to call bcrypt to perform the embedded encryption function.
+const bcryptSalt = bcrypt.genSaltSync(10)
+const jwtSecret = 'this is a random string'
 
+
+
+// Connection to MongooseDB
+mongoose.connect(process.env.MONGODBURI)
+
+
+/* Mount routes
+--------------------------------------------------------------- */
 app.get('/test', (req, res) => {
     res.json('test ok');
 })
+
+
+
 
 app.post('/signup', async (req, res) => {
     const {name, email, password} = req.body
@@ -84,4 +104,10 @@ app.get('/profile', (req, res) => {
     
 })
 
+// Routes for user CRUD operations
+app.use('/users', userCtrl)
+// app.use('/services', serviceCtrl)
+
+/* Tell the app to listen on the specified port
+--------------------------------------------------------------- */
 app.listen(5000)
