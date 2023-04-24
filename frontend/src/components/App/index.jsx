@@ -34,6 +34,8 @@ function App() {
             <Route path="/login" element={<LogInPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/account" element={<AccountPage />}/> 
+            <Route path="/account/services" element={<AccountPage />}/> 
+            <Route path="/account/products" element={<AccountPage />}/> 
 
         </Routes>
       </UserContextProvder>
