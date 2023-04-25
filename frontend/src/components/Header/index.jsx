@@ -1,13 +1,7 @@
 import { Route, Routes, Link } from 'react-router-dom'
 
-import axios from 'axios'
-import { useContext } from 'react'
-import { UserContext } from '../UserContext'
-
-
-
 function Header() {
-    const {user} = useContext(UserContext)
+    
     return (
         <>
         <div>
@@ -20,11 +14,7 @@ function Header() {
                     <div className="p-4"><Link to="/services">Services</Link></div>
                     <div className="p-4"><Link to="/products">Products</Link></div>
                     <div className="p-4"><Link to="/about">About Me</Link></div>
-                    <div className="p-4"><Link to={user? "/account" : "/login"}>Log In {!!user && (
-                        <div>
-                            {user.name}
-                        </div>
-                    )}
+                    <div className="p-4"><Link to={"/login"}>Log In 
                     </Link>
                     </div>
                     <div className="p-4"><Link to="/account">Account</Link></div>

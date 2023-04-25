@@ -4,7 +4,6 @@ const ServiceSchema = new mongoose.Schema({
     serviceName: {type: String},
     servicePrice: {type: String},
     serviceDescription: {type: String},
-    serviceCost: {type: String},
     servicePhoto: {type: String}
 })
 
