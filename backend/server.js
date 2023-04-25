@@ -52,7 +52,7 @@ app.get('/seed', function (req, res) {
 
 //This tells our app to look at the 'controllers/services.js' file to handle all routes that begin with 'localhost:3000/services
 app.use('/services', srvCtrl)
-// app.use('/users', userCtrl)
+app.use('/users', userCtrl)
 
 
 /* Tell the app to listen on the specified port
