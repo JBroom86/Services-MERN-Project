@@ -8,6 +8,7 @@ function HomePage() {
 
     return (
         <>
+            <h1>Homepage information will go here.</h1>
         </>
     )
 }
