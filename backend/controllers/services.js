@@ -8,7 +8,7 @@ NOTE: Remember that all routes on this page are prefixed with `localhost:3000/ap
 /* Require modules
 --------------------------------------------------------------- */
 const express = require('express')
-// Router allows us to handle routing outisde of server.js
+// Router allows us to handle routing outside of server.js
 const router = express.Router()
 
 /* Require the db connection, and models
@@ -18,52 +18,37 @@ const db = require('../models')
 /* Routes
 --------------------------------------------------------------- */
 // Index Route (GET/Read): Will display all services
-// router.get('/', (req, res) => {
-//     db.Service.find()
-//     .then(services => {
-//         const flatList = []
-//         for (let service of services) {
-//             flatList.push(service._id, service.serviceName, service.servicePrice, service.serviceDescription, service.servicePhoto)
-//         }
-//         res.json(flatList)
-//     })
-// })
-
 router.get('/', (req, res) => {
     db.Service.find()
-      .then(services => {
-        const serviceList = []
-        for (let service of services) {
-          serviceList.push({
-            id: service._id,
-            name: service.serviceName,
-            price: service.servicePrice,
-            description: service.serviceDescription,
-            photo: service.servicePhoto
-          })
-        }
-        res.json(serviceList)
-      })
+      .then(services => res.json(services))
   })
 
 // Create Route
-router.post('/create/:serviceId', (req, res) => {
-    db.Service.findByIdAndUpdate(
-        req.params.serviceId,
-        { $push: { services: req.body} },
-        { new: true }
-    )
-    .then(() => res.redirect('/services'))
+router.post('/', (req, res) => {
+    db.Service.create(req.body)
+    .then(service => res.redirect('/services/' + service._id))        
 })
 
-//Delete Route
-router.delete('/.id', (req,res) => {
-    db.Service.findOneAndUpdate(
-        { 'services._id': req.params.id },
-        { $pull: { services: {_id: req.params.id}}},
-        { new: true }
-    )
-        .then(() => res.redirect('/services'))
+//Show Route
+router.get('/:id', function (req, res) {
+    db.Service.findById(req.params.id)
+      .then(service => res.json(service))
+})
+
+//Update Route
+router.put('/:id', (req, res) => {
+  db.Service.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true }
+  )
+    .then (service => res.redirect('/services/' + service._id))
+})
+
+// Delete Route
+router.delete('/:id', (req, res) => {
+    db.Service.findByIdAndRemove(req.params.id)
+    .then(() => res.redirect('/services'))
 })
 
 // Exports these routes so that they are accessible in 'server.js'
