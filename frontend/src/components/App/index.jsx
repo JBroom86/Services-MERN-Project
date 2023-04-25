@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Header from '../Header'
+import Footer from '../Footer'
 import HomePage from '../HomePage'
 // import LogInPage from '../Log-inPage'
 import AboutPage from '../AboutPage'
@@ -25,6 +26,7 @@ function App() {
     
 
       
+      <Footer />
         <Routes>
 
             <Route path="/" element={<HomePage />} />   
