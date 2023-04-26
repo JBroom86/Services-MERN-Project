@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getServicesId } from "../../../utils/backend";
+import { deleteService } from "../../../utils/backend";
 
 function ServiceDetailsPage() {
   const { serviceId } = useParams();
@@ -10,6 +11,10 @@ function ServiceDetailsPage() {
     console.log(serviceId)
     getServicesId(serviceId).then((data) => setService(data));
   }, [serviceId]);
+
+  function handleDelete() {
+    deleteService(serviceId)
+  }
 
   return (
     <>
@@ -26,8 +31,8 @@ function ServiceDetailsPage() {
           </p>
           <p className="mt-4 font-medium">{service.servicePrice}</p>
         </div>
-      
       )}
+      <button onClick={handleDelete}>Delete</button>
     </>
   );
 }

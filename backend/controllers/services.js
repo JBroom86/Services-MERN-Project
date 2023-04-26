@@ -48,8 +48,8 @@ router.put('/:id', (req, res) => {
 // Delete Route
 router.delete('/:id', (req, res) => {
     db.Service.findByIdAndRemove(req.params.id)
-    .then(() => res.redirect('/services'))
+    .then(service => res.json(service))
 })
 
 // Exports these routes so that they are accessible in 'server.js'
-module.exports = router
+module.exports = router 

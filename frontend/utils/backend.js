@@ -10,3 +10,8 @@ export async function getServicesId(id) {
     const {data} = await axios.get('http://localhost:3000/services/' + id) 
     return data
 }
+
+export async function deleteService(id) {
+    axios.delete(`http://localhost:3000/services/${id}`)
+    
+} 
