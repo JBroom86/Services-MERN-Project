@@ -7,14 +7,14 @@ import HomePage from '../HomePage'
 import AboutPage from '../AboutPage'
 import ProductsPage from '../ProductsPage'
 import ServicesPage from '../ServicesPage'
+import ServiceDetailsPage from '../ServiceDetailsPage'
 // import SignupPage from '../SignupPage'
 import axios from 'axios'
 import './styles.css'
 // import AccountPage from '../AccountPage'
 
 
-// axios.defaults.baseURL = 'http://localhost:5000'
-// axios.defaults.withCredentials = true;
+
 
 function App() {
   
@@ -26,11 +26,12 @@ function App() {
     
 
       
-      <Footer />
+      
         <Routes>
 
             <Route path="/" element={<HomePage />} />   
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/:serviceId" element={<ServiceDetailsPage />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/about" element={<AboutPage />} />
             {/* <Route path="/login" element={<LogInPage />} /> */}
@@ -40,6 +41,8 @@ function App() {
             <Route path="/account/products" element={<AccountPage />}/>  */}
 
         </Routes>
+      
+      <Footer />
       
     </>
   )
