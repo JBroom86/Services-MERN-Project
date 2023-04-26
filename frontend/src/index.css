@@ -9,10 +9,14 @@ input[type="text"], input[type="password"], input[type="email"] {
 }
 
 button {
-  @apply bg-gray-300 w-full;
+  @apply bg-gray-300 text-white;
 }
 
 button.loginbutton {
   background-color: #f5385d;
   @apply p-2 w-full text-white rounded-2xl;
+}
+
+body {
+  padding-bottom: 64px; 
 }

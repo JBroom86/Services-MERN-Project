@@ -35,11 +35,12 @@ function ServiceDetailsPage() {
             {service.serviceDescription}
           </p>
           <p className="mt-4 font-medium">{service.servicePrice}</p>
+          <button className="px-4 py-2 w-1/16 bg-red-500 rounded-lg" onClick={handleDelete}>Delete Service</button>
         </div>
       )}
-      <button onClick={handleDelete}>Delete</button>
+      
     </>
   );
-}
+}  
 
 export default ServiceDetailsPage;

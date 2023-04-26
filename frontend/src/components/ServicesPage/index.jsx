@@ -19,7 +19,7 @@ function ServicesPage() {
       <div className="flex justify-between items-center mb-4">
         
         <button
-          className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 inline-block w-1/4"
+          className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 inline-block w-1/4 shadow-lg"
           onClick={handleCreateService}
         >
           Add Service
