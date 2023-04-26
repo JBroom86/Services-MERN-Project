@@ -15,3 +15,8 @@ export async function deleteService(id) {
     axios.delete(`http://localhost:3000/services/${id}`)
     
 } 
+
+export async function createService(serviceData) {
+  const { data } = await axios.post("http://localhost:3000/services", serviceData);
+  return data;
+}
