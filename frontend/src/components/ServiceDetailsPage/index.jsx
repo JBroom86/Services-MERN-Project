@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate} from 'react-router-dom'
 import { getServicesId } from "../../../utils/backend";
 import { deleteService } from "../../../utils/backend";
 
 function ServiceDetailsPage() {
   const { serviceId } = useParams();
   const [service, setService] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log(serviceId)
@@ -13,7 +15,10 @@ function ServiceDetailsPage() {
   }, [serviceId]);
 
   function handleDelete() {
-    deleteService(serviceId)
+    deleteService(serviceId).then(() => {
+      navigate('/services')
+      window.location.reload()
+    })
   }
 
   return (
