@@ -19,9 +19,9 @@ function ServiceDetailsPage() {
           <img
             src={service.servicePhoto}
             alt={service.serviceName}
-            className="mt-4 w-3/4 rounded-md"
+            className="mt-4 w-2/4 rounded-md"
           />
-          <p className="mt-4 text-gray-700  text-overflow overflow-hidden w-3/4">
+          <p className="mt-4 text-gray-700  text-overflow overflow-hidden w-2/4">
             {service.serviceDescription}
           </p>
           <p className="mt-4 font-medium">{service.servicePrice}</p>
