@@ -10,7 +10,7 @@ function HomePage() {
           <img
             src="..\src\assets\photos\IMG_6922.jpg"
             
-            class="rounded-full w-3/4 mx-auto hover:shadow-2xl focus:shadow-lg hover:rotate-45 transform transition-all duration-500 ease-in-out"
+            class="rounded-full w-3/4 sm:w-3/4 mx-auto hover:shadow-2xl focus:shadow-lg hover:rotate-45 transform transition-all duration-500 ease-in-out"
           />
         </Link>
       </div>
