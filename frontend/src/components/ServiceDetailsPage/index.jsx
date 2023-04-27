@@ -34,7 +34,7 @@ function ServiceDetailsPage() {
   function handleChange(event) {
     const { name, value } = event.target;
     setUpdatedService({ ...updatedService, [name]: value });
-    window.location.reload();
+    // window.location.reload();
   }
 
   return (
@@ -52,7 +52,7 @@ function ServiceDetailsPage() {
             name="serviceDescription"
             value={updatedService.serviceDescription || ""}
             className="mt-4 w-3/4 rounded-md"
-            rows="6"
+            rows='6'
             onChange={handleChange}
           />
 
