@@ -51,7 +51,8 @@ function ServiceDetailsPage() {
             type="text"
             name="serviceDescription"
             value={updatedService.serviceDescription || ""}
-            className="mt-4 w-3/4 rounded-md "
+            className="mt-4 w-3/4 rounded-md"
+            rows="6"
             onChange={handleChange}
           />
 
