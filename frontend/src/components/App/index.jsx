@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import Header from "../Header";
 import Footer from "../Footer";
 import HomePage from "../Homepage";
-
 import AboutPage from "../AboutPage";
 import ProductsPage from "../ProductsPage";
 import ServicesPage from "../ServicesPage";
