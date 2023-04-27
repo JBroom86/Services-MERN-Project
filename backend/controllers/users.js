@@ -10,6 +10,7 @@ NOTE: Remember that all routes on this page are prefixed with `localhost:3000/ap
 const express = require('express')
 // Router allows us to handle routing outside of server.js
 const router = express.Router()
+const bcrypt = require('bcrypt');
 
 /* Require the db connection, and models
 --------------------------------------------------------------- */
@@ -24,9 +25,17 @@ router.get('/', (req, res) => {
   })
 
 // Create Route
-router.post('/', (req, res) => {
-    db.User.create(req.body)
-    .then(user => res.redirect('/users/' + user._id))        
+router.post('/', async (req, res) => {
+  try {
+    const { name, email, password } = req.body
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10)
+    const user = await db.User.create({ name, email, password: hashedPassword })
+    res.redirect('/users/' + user._id)
+  } catch (err) {
+    console.error(err)
+    res.status(500).send('Error creating user')
+  }
 })
 
 //Show Route
@@ -36,13 +45,22 @@ router.get('/:id', function (req, res) {
 })
 
 //Update Route
-router.put('/:id', (req, res) => {
-  db.User.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    { new: true }
-  )
-    .then (user => res.redirect('/users/' + user._id))
+router.put('/:id', async (req, res) => {
+  try {
+    const { name, email, password } = req.body
+    // Hash the new password if it was included in the request
+    const hashedPassword = password ? await bcrypt.hash(password, 10) : null
+    const updates = { name, email, password: hashedPassword }
+    const user = await db.User.findByIdAndUpdate(
+      req.params.id,
+      updates,
+      { new: true }
+    )
+    res.redirect('/users/' + user._id)
+  } catch (err) {
+    console.error(err)
+    res.status(500).send('Error updating user')
+  }
 })
 
 // Delete Route
