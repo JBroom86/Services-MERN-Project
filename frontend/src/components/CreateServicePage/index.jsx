@@ -53,11 +53,11 @@ function CreateServicePage() {
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 font-medium mb-2" htmlFor="servicePrice">
-            Service Price
+            Service Price 
           </label>
           <input
             className="border rounded-md p-2 w-full"
-            type="number"
+            type="text"
             name="servicePrice"
             value={servicePrice}
             onChange={(e) => setServicePrice(e.target.value)}

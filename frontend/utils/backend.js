@@ -20,3 +20,9 @@ export async function createService(serviceData) {
   const { data } = await axios.post("http://localhost:3000/services", serviceData);
   return data;
 }
+
+export async function updateService(id, updatedServiceData) {
+    const { data } = await axios.put(`http://localhost:3000/services/${id}`, updatedServiceData);
+    return data;
+  }
+  
