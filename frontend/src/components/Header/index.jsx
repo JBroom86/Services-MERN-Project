@@ -26,9 +26,9 @@ function Header() {
         <div className="p-4">
           <Link to={"/auth/login"}>Log In</Link>
         </div>
-        <div className="p-4">
+        {/* <div className="p-4">
           <Link to="/auth/signup">Sign Up</Link>
-        </div>
+        </div> */}
       </div>
     </header>
   );

@@ -3,17 +3,17 @@ import { Route, Routes } from 'react-router-dom'
 import Header from '../Header'
 import Footer from '../Footer'
 import HomePage from '../Homepage'
-// import LogInPage from '../Log-inPage'
+
 import AboutPage from '../AboutPage'
 import ProductsPage from '../ProductsPage'
 import ServicesPage from '../ServicesPage'
 import ServiceDetailsPage from '../ServiceDetailsPage'
 import CreateServicePage from '../CreateServicePage'
 import AuthFormPage from '../AuthFormPage'
-// import SignupPage from '../SignupPage'
-import axios from 'axios'
+
+
 import './styles.css'
-// import AccountPage from '../AccountPage'
+
 
 
 
@@ -38,11 +38,7 @@ function App() {
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/auth/:formType" element={<AuthFormPage />} />
-            {/* <Route path="/login" element={<LogInPage />} /> */}
-            {/* <Route path="/signup" element={<SignupPage />} /> */}
-            {/* <Route path="/account" element={<AccountPage />}/> 
-            <Route path="/account/services" element={<AccountPage />}/> 
-            <Route path="/account/products" element={<AccountPage />}/>  */}
+            
 
         </Routes>
       
