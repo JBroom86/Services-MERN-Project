@@ -4,7 +4,7 @@ import { getServices } from "../../../utils/backend";
 
 function ServicesPage() {
   const [services, setServices] = useState([]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     getServices().then((data) => setServices(data));
@@ -17,7 +17,6 @@ function ServicesPage() {
   return (
     <>
       <div className="flex justify-between items-center mb-4">
-        
         <button
           className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 inline-block w-1/4 shadow-lg"
           onClick={handleCreateService}
