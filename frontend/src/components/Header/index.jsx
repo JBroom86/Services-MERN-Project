@@ -24,10 +24,10 @@ function Header() {
           <Link to="/about">About Me</Link>
         </div>
         <div className="p-4">
-          <Link to={"/login"}>Log In</Link>
+          <Link to={"/auth/login"}>Log In</Link>
         </div>
         <div className="p-4">
-          <Link to="/account">Account</Link>
+          <Link to="/auth/signup">Sign Up</Link>
         </div>
       </div>
     </header>

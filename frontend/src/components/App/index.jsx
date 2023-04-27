@@ -9,6 +9,7 @@ import ProductsPage from '../ProductsPage'
 import ServicesPage from '../ServicesPage'
 import ServiceDetailsPage from '../ServiceDetailsPage'
 import CreateServicePage from '../CreateServicePage'
+import AuthFormPage from '../AuthFormPage'
 // import SignupPage from '../SignupPage'
 import axios from 'axios'
 import './styles.css'
@@ -36,6 +37,7 @@ function App() {
             <Route path='/services/create' element= {<CreateServicePage/>} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/auth/:formType" element={<AuthFormPage />} />
             {/* <Route path="/login" element={<LogInPage />} /> */}
             {/* <Route path="/signup" element={<SignupPage />} /> */}
             {/* <Route path="/account" element={<AccountPage />}/> 

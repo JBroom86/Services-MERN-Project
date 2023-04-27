@@ -1,4 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
+
+const authHeader = { headers: { 'Authorization': localStorage.getItem('userToken') } }
+
 
 // the await needs to be before the axios request because it is an async function
 export async function getServices() {
@@ -25,4 +28,15 @@ export async function updateService(id, updatedServiceData) {
     const { data } = await axios.put(`http://localhost:3000/services/${id}`, updatedServiceData);
     return data;
   }
+
+  export async function signUp(user) {
+    const { data } = await axios.post('http://localhost:3000/users/signup', user)
+    return data
+}
+
+export async function logIn(user) {
+    const { data } = await axios.post('http://localhost:3000/users/login', user)
+    return data
+}
+
   
