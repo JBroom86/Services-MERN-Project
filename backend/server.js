@@ -43,9 +43,11 @@ app.get("/seed", function (req, res) {
   });
 });
 
-// app.get('*', function (req, res) {
-//     res.send('404 Error: Page Not Found')
-// });
+// Any other route not matching the routes above gets routed by React
+app.get('*', (req, res) => {
+  res.sendFile(path.join(path.dirname(__dirname), 'frontend', 'dist', 'index.html'));
+});
+
 
 //This tells our app to look at the 'controllers/services.js' file to handle all routes that begin with 'localhost:3000/services
 app.use("/services", srvCtrl);
