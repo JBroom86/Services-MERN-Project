@@ -47,8 +47,8 @@ app.get("/seed", function (req, res) {
 
 
 //This tells our app to look at the 'controllers/services.js' file to handle all routes that begin with 'localhost:3000/services
-app.use("/services", srvCtrl);
-app.use("/users", userCtrl);
+app.use("/api/services", srvCtrl);
+app.use("/api/users", userCtrl);
 
 // Any other route not matching the routes above gets routed by React
 app.get('*', (req, res) => {
